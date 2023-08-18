@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Exercicio09{
+    public static void main(String[]args){
+        int cont,n,p;
+        p = 0;
+        
+        for (cont = 2;cont<=100;cont++){
+            boolean primo = true;
+        
+            for (n=2;n<=100;n++){
+                if(cont%n==0 && cont!=n){
+                    primo = false;    
+                    break;
+                }
+                else{
+                    primo = true;
+                }
+            }
+            if (primo){
+                System.out.print(cont + " ");
+            }
+        }
+
+      }
+  }
