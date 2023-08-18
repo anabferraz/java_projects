@@ -1,0 +1,25 @@
+
+import java.util.Scanner;
+
+public class Exercicio04{
+    public static void main(String[]args){
+        int a,b,c,maior;
+        maior = 0;
+        System.out.println("Digite o valor de a: ");
+        Scanner scan = new Scanner(System.in);
+        a = scan.nextInt();
+        System.out.println("Digite o valor de b: ");
+        b = scan.nextInt();
+        System.out.println("Digite o valor de c: ");
+        c = scan.nextInt();
+        if (a>b && a>c){
+            System.out.println("O maior número é o a: "+a);
+        }
+        else if(b>a && b>c){
+            System.out.println("O maior número é o b: "+b);
+        }
+        else{
+            System.out.println("O maior número é o c: "+c);
+        }
+    }
+}
