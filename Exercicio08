@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Exercicio08{
+    public static void main(String[]args){
+        int nomes,idade,soma,media,qtd;
+        String nome;
+        soma = 0;
+        Scanner scan = new Scanner(System.in);
+        nomes = scan.nextInt();
+        qtd = nomes;
+        while(nomes>=1){
+            Scanner scan1 = new Scanner(System.in);
+            System.out.println("Digite o nome da pessoa: ");
+            nome = scan1.nextLine();
+            System.out.println("Digite a idade do(a) "+nome);
+            idade = scan1.nextInt();
+            soma = soma + idade;
+            nomes--;
+        }
+        media = (soma / qtd);
+        System.out.println("A média das idades é: "+media);
+        
+    }
+}
