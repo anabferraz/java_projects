@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class Exercicio01 {
+    public static void main (String[]args){
+        int a, b, soma;
+        System.out.println("Digite o valor de a: ");
+        Scanner scanner = new Scanner(System.in);
+        a = scanner.nextInt();
+        System.out.println("Digite o valor de b: ");
+        b = scanner.nextInt();
+        soma = a + b;
+        System.out.println("O resultado da soma é: "+ soma);
+    }
+}
