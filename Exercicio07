@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Exercicio07{
+    public static void main(String[]args){
+        int n,cont;
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Digite um número maior que 1: ");
+        n = scan.nextInt();
+        if (n>1){
+            System.out.println("Sequência de Fibonacci com " + n + " termos:");
+            int [] Sequence = new int[n+1];
+            for(cont=0;cont<=n;cont++){
+                 Sequence[cont] = fibonacci(cont);
+                 System.out.print(Sequence[cont]+" ");
+                }             
+            System.out.println("\nO resultado da sequência de Fibonacci do número "+n+" é: "+Sequence[n]);
+                
+        }
+        else{
+            System.out.println("O número digitado é menor ou igual a 1. Número inválido.");
+        }
+        
+        }
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+    }
+}
