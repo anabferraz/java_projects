@@ -1,0 +1,46 @@
+package uscs;
+
+public class Unidade2Exercicio1 {
+
+    public static void main(String[] args) {
+        Carro carro1 = new Carro();
+        Carro carro2 = new Carro();
+        Carro carro3 = new Carro();
+        
+        carro1.marca = "Toyota";
+        carro1.modelo = "Corolla";
+        carro1.ano = 2020;
+        
+        carro2.marca = "Honda";
+        carro2.modelo = "Civic";
+        carro2.ano = 2019;
+        
+        carro3.marca = "Fiat";
+        carro3.modelo = "Uno";
+        carro3.ano = 2011;
+        
+        carro1.ligar();
+        carro2.acelerar();
+        
+        System.out.println("Carro 1: " + carro1.marca + " " + carro1.modelo);
+        System.out.println("Carro 2: " + carro2.marca + " " + carro2.modelo);
+        System.out.println("Carro 3: " + carro3.marca + " " + carro3.modelo);
+    }
+    
+}
+--------------------------
+public class Carro {
+    public String marca;
+    public String modelo;
+    public int ano;
+    
+    public void ligar(){
+        
+    }
+    public void acelerar(){
+        
+    }
+    public void frear(){
+        
+    }
+}
