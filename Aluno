@@ -1,0 +1,108 @@
+package fsa;
+
+public class Unidade2Exercicio2 {
+
+    public static void main(String[] args) {
+            
+        Aluno x1 = new Aluno();
+        Aluno x2 = new Aluno();
+    
+        x1.nome = "Paulo";
+        x1.codmat = 55123;
+        x1.cpf = "800912345-12";
+        x1.sexo = 'M';
+        x1.nota_P1 = 7.0;
+        x1.nota_P2 = 6.0;
+        x1.nota_P3 = 8.0;
+        
+        x2.nome = "Ana";
+        x2.codmat = 991239;
+        x2.cpf = "500876123-15";
+        x2.sexo = 'F';
+        x2.nota_P1 = 2.0;
+        x2.nota_P2 = 6.0;
+        x2.nota_P3 = 9.0;
+        
+        x1.ImprimeAluno();
+        x2.ImprimeAluno();
+        x1.ImprimeSexo();
+        x2.ImprimeSexo();
+        x1.MediaAluno();
+        x2.MediaAluno();
+        x1.Resultado();
+        x2.Resultado();
+        
+    }
+    
+}
+--------------------
+public class Aluno {
+    public String nome;
+    public int codmat;
+    public String cpf;
+    public char sexo;
+    public double nota_P1;
+    public double nota_P2;
+    public double nota_P3;
+    
+    public void ImprimeAluno(){
+        System.out.println("Nome: "+nome+" \nmatéria: "+codmat+" \nCPF: "+cpf);
+    }
+    public void ImprimeSexo(){
+        if (sexo == 'M'){
+            System.out.println("O aluno "+nome+" é do sexo masculino.");
+        }
+        else {
+            System.out.println("A aluna "+nome+" é do sexo feminino.");
+            }
+    }
+    public void MediaAluno(){
+        double media;
+        
+        if (nota_P1 <= nota_P2 && nota_P1 <= nota_P3){
+            media = (nota_P2 + nota_P3)/2;
+            System.out.println("A média do aluno(a) "+ nome+ " é: "+ media);
+        }
+        if (nota_P2<=nota_P1 && nota_P2<=nota_P3){
+            media = (nota_P1 + nota_P3)/2;
+            System.out.println("A média do aluno(a) "+ nome+ " é: "+ media);
+        }
+        if (nota_P3<=nota_P1 && nota_P3<=nota_P2){
+            media = (nota_P1 + nota_P2)/2;
+            System.out.println("A média do aluno(a) "+ nome+ " é: "+ media);
+        }
+        
+    }
+    public void Resultado(){
+        double media;
+        
+        if (nota_P1 <= nota_P2 && nota_P1 <= nota_P3){
+            media = (nota_P2 + nota_P3)/2;
+            if(media>=7.00){
+                System.out.println("O aluno(a) foi aprovado(a)!");
+            }
+            else{
+                System.out.println("O aluno(a) foi reprovado(a)!");
+            }
+        }
+        if (nota_P2<=nota_P1 && nota_P2<=nota_P3){
+            media = (nota_P1 + nota_P3)/2;
+            if(media>=7.00){
+                System.out.println("O aluno(a) foi aprovado(a)!");
+            }
+            else{
+                System.out.println("O aluno(a) foi reprovado(a)!");
+            }
+        }
+        if (nota_P3<=nota_P1 && nota_P3<=nota_P2){
+            media = (nota_P1 + nota_P2)/2;
+            if(media>=7.00){
+                System.out.println("O aluno(a) foi aprovado(a)!");
+            }
+            else{
+                System.out.println("O aluno(a) foi reprovado(a)!");
+            }
+        }
+        
+    }
+}
