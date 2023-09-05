@@ -2,7 +2,7 @@ package fsa;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
-public class Unidade3Exercicio1{
+public class Recursividade{
     
         public static void main(String[] args) {
            //exercicios 2 e 3
