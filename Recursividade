@@ -1,0 +1,69 @@
+package fsa;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Unidade3Exercicio1{
+    
+        public static void main(String[] args) {
+           //exercicios 2 e 3
+           int n = 5;
+           int num = 9;
+           System.out.println(factorial(n));
+           System.out.println(fibonacci(num));
+           //exercicios 4 e 5
+           Scanner scan = new Scanner(System.in);
+           System.out.println("Digite a potência: ");
+           int pot = scan.nextInt();
+           System.out.println("Digite o número: ");
+           int numer = scan.nextInt();
+           System.out.println("O resultado de "+numer+" elevado a "+pot+" é: "+potencializacao(pot,numer));
+           System.out.println("O número 2 elevado a 4 é: "+potencializacao(4,2));
+           //exercícios 6 e 7
+           ArrayList<Integer> lista = new ArrayList<>();
+           while (true) {
+            System.out.print("Digite um número (ou 0 para parar): ");
+            int numero = scan.nextInt();
+
+            if (numero == 0) {
+                break;
+            }
+            lista.add(numero);
+            }
+           int soma = somaArray(lista, 0);
+           System.out.println("A soma dos números da lista é: "+soma);
+           ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+           int soma1 = somaArray(array, 0);
+           System.out.println("A soma dos elementos do array é: " + soma1);
+        }
+    
+    public static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+        }
+     private static int fibonacci(int num) {
+        if (num==0 || num==1)
+        return num;
+        else
+        return (fibonacci(num-1) + fibonacci (num-2));
+     }
+     public static int potencializacao (int pot, int numer){
+         if (pot==1){
+             return numer;
+         }
+         else if (pot==0){
+             return 1;
+         }
+         else
+             return numer * potencializacao(pot - 1,numer);
+     }
+     public static int somaArray (ArrayList<Integer> lista,int indice){
+         if (indice == lista.size()) {
+            return 0; 
+        } else {
+            return lista.get(indice) + somaArray(lista, indice + 1);
+        }
+     }
+}
