@@ -1,1 +1,155 @@
+package listaEncadeada;
+
+public class No {
+ String dado;
+ No prox;
+ 
+
+ No(String dado){
+
+ this.dado = dado;
+ prox = null;
+ }
+}
+
+-----------------------------
+
+package listaEncadeada;
+import java.util.Scanner;
+
+public class Lista {
+ No primeiro;
+ No segundo;
+ No ultimo;
+ int posicao;
+ int numero_nos;
+ Lista() {
+ primeiro = ultimo = null;
+ numero_nos = 0;
+ }
+ 
+ void insereNo_fim(No novoNo) {
+ if (primeiro == null) {
+ primeiro = novoNo;
+ }
+ if (ultimo != null) {
+ ultimo.prox = novoNo;
+ }
+ ultimo = novoNo;
+ numero_nos++;
+ }
+ 
+ void insereNo_comeco (No novoNo){
+     novoNo.prox = primeiro;
+     primeiro = novoNo;
+     numero_nos++;
+ }
+ 
+ void imprimeNumNo (){
+     System.out.println(numero_nos);
+ }
+ 
+ void excluiNo_comeco (){
+     if(primeiro == null){
+         System.out.println("Não é possível excluir pois a fila está vazia");
+     }
+     else {
+         segundo = primeiro.prox;
+         primeiro = segundo;
+         numero_nos--;
+     }
+ }
+ 
+ void insereNo_posicao (No novoNo){
+     Scanner scan = new Scanner(System.in);
+     System.out.println("Digite a posição que você deseja inserir o novo objeto: ");
+     int p = scan.nextInt();
+     if (p == 0){
+         insereNo_comeco(novoNo);
+     }
+     else if (p > 0 && p < numero_nos){
+         No noAnterior = getNoNaPosicao(p - 1);
+        
+        if (noAnterior != null) {
+            novoNo.prox = noAnterior.prox; 
+            noAnterior.prox = novoNo; 
+            numero_nos++;
+        }
+    } else if (p==numero_nos){
+        insereNo_fim(novoNo);
+    }
+     else{
+        System.out.println("Posição inválida. A posição deve estar entre 0 e " + (numero_nos - 1));
+    }
+ }
+ 
+ public No getNoNaPosicao(int p){
+     if (p < 0 || p >= numero_nos) {
+        return null; 
+    }
+     No no = primeiro;
+     int cont = 0;
+     while (cont < p) {
+        no = no.prox;
+        cont++;
+    }
+    return no;
+ }
+ 
+public void mostrarNos() {
+ No corrente = primeiro;
+ while (corrente != null) {
+ System.out.print(corrente.dado + " -> ");
+ corrente = corrente.prox;
+ }
+ System.out.println("null");
+ }
+
+public int getPosicaoDoNo(){
+No noAtual = primeiro;
+int indic = 0;
+Scanner scan1 = new Scanner(System.in);
+System.out.println("Digite o valor que deseja procurar: ");
+String s = scan1.nextLine();
+while (noAtual != null){
+        if (noAtual.dado.equals(s)) {
+        System.out.println("A posição do valor procurado na lista é "+indic);    
+        return indic;
+        }
+        
+        noAtual = noAtual.prox;
+        indic++;
+    }
+System.out.println("O valor indicado não existe na lista.");
+ return -1;
+}
+}
+
+------------------------------------------
+package listaEncadeada;
+
+
+public class TestaLista {
+    
+ public static void main(String[] args)
+ {
+ Lista lista = new Lista();
+ lista.insereNo_fim(new No("Ana"));
+ lista.insereNo_fim(new No("Paulo"));
+ lista.insereNo_fim(new No("Beto"));
+ lista.insereNo_fim(new No("Maria"));
+ lista.insereNo_fim(new No("Eduardo"));
+ lista.insereNo_comeco(new No("Glaucia"));
+ lista.mostrarNos();
+ lista.imprimeNumNo();
+ lista.excluiNo_comeco();
+ lista.mostrarNos();
+ lista.imprimeNumNo();
+ lista.insereNo_posicao(new No("Filipe"));
+ lista.mostrarNos();
+ lista.imprimeNumNo();
+ lista.getPosicaoDoNo();
+         
+ }
+}
 
