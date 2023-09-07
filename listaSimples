@@ -1,0 +1,38 @@
+package listaSimples;
+
+public class No {
+    String dado;
+    No prox;
+
+    No(String dado){
+        this.dado = dado;
+        prox = null;
+    }
+}
+-----------------------
+package listaSimples;
+
+public class TestaListaSimples {
+    
+    public static void main(String[] args) {
+        No primeiro = new No ("Nelio");
+        No segundo = new No ("Bianca");
+        No terceiro = new No ("Marcela");
+        No quarto = new No ("Clara");
+        No quinto = new No ("Ana");
+        No sexto = new No ("Rodrigo");
+
+        primeiro.prox = segundo;
+        segundo.prox = terceiro;
+        terceiro.prox = quarto;
+        quarto.prox = quinto;
+        quinto.prox = sexto;
+
+        No corrente = primeiro;
+        while (corrente != null) {
+        System.out.print(corrente.dado + " -> ");
+        corrente = corrente.prox;
+        }
+        System.out.println("null");
+    }
+}
