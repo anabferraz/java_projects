@@ -1,0 +1,14 @@
+package com.mycompany.first;
+
+class Worker1 extends Thread {
+ public void run() {
+    System.out.println("Eu sou uma thread trabalhadora");
+ }
+}
+public class FirstThread {
+ public static void main (String args[]) {
+    Thread runner = new Worker1();
+    runner.start(); /* cria a nova thread */
+    System.out.println("Eu sou a thread principal");
+ }
+}
