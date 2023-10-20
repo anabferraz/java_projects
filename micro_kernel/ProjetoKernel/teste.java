@@ -1,7 +1,14 @@
-package micro_kernel;
+//import micro_kernel.*; 
 import java.util.PriorityQueue;
-class PriorityComparator implements Comparator<Process> {
-    public CircularPriorityQueue(int capacity) {
+import java.util.Queue;
+import java.util.LinkedList;
+public class PriorityComparator implements Comparator<Process> {
+    int capacity;
+    Queue []queues;
+    int []priorities;
+    int []indices;
+
+    public void CircularPriorityQueue(int capacity) {
         this.capacity = capacity;
         queues = new Queue[3];
         priorities = new int[3];
