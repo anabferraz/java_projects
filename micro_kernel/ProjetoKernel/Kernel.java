@@ -1,5 +1,5 @@
 //package micro_kernel;
-import java.util.PriorityQueue;
+import java.util.*;
 
 class Kernel {
     private PriorityQueue<Process> readyQueue;
