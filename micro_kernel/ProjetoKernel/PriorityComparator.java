@@ -6,6 +6,24 @@ public class PriorityComparator implements Comparator<Process> {
     int []priorities;
     int []indices;
 
+    public int compare(Process p1, Process p2) {
+        if (p1 instanceof Process && p2 instanceof Process) {
+ 
+            int priority1 = p1.getPriority();
+            int priority2 = p2.getPriority();
+
+            if (priority1 < priority2) {
+                return -1; // p1 is less important
+            } else if (priority1 > priority2) {
+                return 1; // p1 is more important
+            } else {
+                return 0; // priorities are equal
+            }
+        } else {
+            throw new IllegalArgumentException("Both items must be instances of Cliente.");
+        }
+    }
+
     public void CircularPriorityQueue(int capacity) {
         this.capacity = capacity;
         queues = new Queue[3];
@@ -24,5 +42,12 @@ class Process {
     private String name;
     private int priority;
 
-    // Implemente o construtor e métodos relevantes para Process aqui
+    public Process(String name, int priority) {
+        this.name = name;
+        this.priority = priority;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
 }
