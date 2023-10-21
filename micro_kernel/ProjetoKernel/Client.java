@@ -1,4 +1,4 @@
-package micro_kernel;
+//package micro_kernel;
 
 class Client implements Runnable {
     private String cliente;

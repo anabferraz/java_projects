@@ -1,4 +1,4 @@
-package micro_kernel;
+//package micro_kernel;
 
 class CPU implements Runnable {
     private String cpu;
