@@ -2,6 +2,7 @@
 
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.*;
 
 class CircularPriorityQueue<T> {
     private Queue<T>[] queues;
@@ -11,7 +12,7 @@ class CircularPriorityQueue<T> {
 
     public CircularPriorityQueue(int capacity) {
         this.capacity = capacity;
-        this.queues = new LinkedList[capacity];
+        this.queues = new Queue[capacity];
         this.priorities = new int[4];
         this.indices = new int[4];
 
@@ -21,10 +22,12 @@ class CircularPriorityQueue<T> {
             indices[i] = 3;
         }
     }
-    public void enqueue(int priority, T item) {
-        if (priority >= 0 && priority < 3) {
+    public <T> void enqueue(Process<T> p) {
+        int priority = p.getPriority();
+        T name = p.getItem();
+        if (priority >= 0 && priority < 4) {
             if (queues[priority].size() < capacity) {
-                queues[priority].add(item);
+                queues[priority].add(name);
             } else {
                 System.out.println("Fila de prioridade " + priority + " está cheia.");
             }
@@ -33,8 +36,9 @@ class CircularPriorityQueue<T> {
         }
     }
 
-    public T dequeue() {
-        for (int i = 0; i <= capacity; i++) {
+    public T dequeue(Process p) {
+        
+        for (int i = 0; i <= 3; i++) {
             int priority = (i + indices[i]) % 4;
             
             if (!queues[priority].isEmpty()) {

@@ -38,11 +38,11 @@ public class PriorityComparator implements Comparator<Process> {
     }
 }
 
-class Process {
-    private String name;
+class Process<T> {
+    private T name;
     private int priority;
 
-    public Process(String name, int priority) {
+    public Process(T name, int priority) {
         this.name = name;
         this.priority = priority;
     }
@@ -50,4 +50,8 @@ class Process {
     public int getPriority() {
         return priority;
     }
+    public T getItem() {
+        return name;
+    }
+
 }

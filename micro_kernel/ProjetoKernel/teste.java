@@ -7,17 +7,20 @@ import java.util.*;
 public class teste{
     public static void main (String[]args){
         CircularPriorityQueue<String> priorityQueue = new CircularPriorityQueue<>(10);
+        Process item1 = new Process("Item 1 - Prioridade 1",1);
+        Process item2 = new Process("Item 2 - Prioridade 0",0);
+        Process item3 = new Process("Item 3 - Prioridade 2",2);
+        Process item4 = new Process("Item 4 - Prioridade 1",1);
 
-        priorityQueue.enqueue(1, "Item 1 - Prioridade 1");
-        priorityQueue.enqueue(0, "Item 2 - Prioridade 0");
-        priorityQueue.enqueue(2, "Item 3 - Prioridade 2");
-        priorityQueue.enqueue(1, "Item 4 - Prioridade 1");
+        priorityQueue.enqueue(item1);
+        priorityQueue.enqueue(item2);
+        priorityQueue.enqueue(item3);
+        priorityQueue.enqueue(item4);
 
-        String item1 = priorityQueue.dequeue();
-        String item2 = priorityQueue.dequeue();
-        String item3 = priorityQueue.dequeue();
-        String item4 = priorityQueue.dequeue();
-
+        priorityQueue.dequeue(item1);
+        priorityQueue.dequeue(item2);
+        priorityQueue.dequeue(item3);
+        priorityQueue.dequeue(item4);
         System.out.println(item1);
         System.out.println(item2);
         System.out.println(item3);
