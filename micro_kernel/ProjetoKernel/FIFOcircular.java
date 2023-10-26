@@ -37,7 +37,8 @@ class CircularPriorityQueue<T> {
     }
 
     public T dequeue(Process p) {
-        
+        Scheduler escalonador = new Scheduler();
+
         for (int i = 0; i <= 3; i++) {
             int priority = (i + indices[i]) % 4;
             
