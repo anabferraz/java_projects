@@ -53,7 +53,7 @@ class Process<T> {
     public T getItem() {
         return name;
     }
-    public void execute(Process p){
+    public void execute(){
         System.out.println("Executing task: " + name);
     }
 

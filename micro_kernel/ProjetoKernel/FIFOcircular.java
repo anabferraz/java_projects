@@ -27,7 +27,7 @@ class CircularPriorityQueue<T> {
         T name = p.getItem();
         if (priority >= 0 && priority < 4) {
             if (queues[priority].size() < capacity) {
-                queues[priority].add(name);
+                queues[priority].add(p.name,p.priority);
             } else {
                 System.out.println("Fila de prioridade " + priority + " está cheia.");
             }
@@ -36,7 +36,7 @@ class CircularPriorityQueue<T> {
         }
     }
 
-    public T dequeue(Process p) {
+    public T dequeue() {
         Scheduler escalonador = new Scheduler();
 
         for (int i = 0; i <= 3; i++) {
@@ -45,7 +45,7 @@ class CircularPriorityQueue<T> {
             if (!queues[priority].isEmpty()) {
                 T item = queues[priority].poll();
                 indices[i] = (indices[i] + 1) % 4;
-                p.execute();
+                queues[priority].execute();
                 return item;
             }
         }
