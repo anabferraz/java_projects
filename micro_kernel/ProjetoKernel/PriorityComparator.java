@@ -53,9 +53,9 @@ class Process<T> {
     public T getItem() {
         return name;
     }
-    public void execute(){
+    public void execute(Process p){
         System.out.println("Executing task: " + name);
     }
-    
+
 
 }

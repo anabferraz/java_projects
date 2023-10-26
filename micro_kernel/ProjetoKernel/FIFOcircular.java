@@ -45,6 +45,7 @@ class CircularPriorityQueue<T> {
             if (!queues[priority].isEmpty()) {
                 T item = queues[priority].poll();
                 indices[i] = (indices[i] + 1) % 4;
+                p.execute();
                 return item;
             }
         }
