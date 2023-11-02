@@ -5,7 +5,7 @@ class Kernel {
     private PriorityQueue<Process> readyQueue;
 
     public Kernel() {
-        readyQueue = new PriorityQueue<>(new PriorityComparator()); // Fila de prontos com prioridade
+        readyQueue = new PriorityQueue<>(); // Fila de prontos com prioridade
     }
 
     public void start() {
@@ -20,8 +20,8 @@ class Kernel {
         cpu2.start();
 
         // Threads clientes para serem atendidas
-        for (int i = 1; i <= 5; i++) {
-            Thread clientThread = new Thread(new Client("Client " + i));
+        for (int i = 1; i < 5; i++) {
+            Thread clientThread = new Thread(new Client);
             clientThread.start();
         }
     }

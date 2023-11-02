@@ -2,9 +2,26 @@
 
 class Client implements Runnable {
     private String cliente;
+    private int prioridade;
 
-    public Client(String cliente) {
+    public int getPrioridadeCliente(){
+        return prioridade;
+    }
+
+    public String getCliente(){
+        return cliente;
+    }
+
+    public void setPrioridadeCliente(int prioridade){
+        this.prioridade = prioridade;
+    }
+
+    public void setCliente(String cliente){
         this.cliente = cliente;
+    }
+
+    public void criarCliente(){
+        
     }
 
     @Override
