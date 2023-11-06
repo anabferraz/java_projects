@@ -17,22 +17,19 @@ class Scheduler implements Runnable {
             int priority1 = p1.getPriority();
             int priority2 = p2.getPriority();
             int num;
-            if (c1 == c2){
-                if (priority1 < priority2) {
+            if (c1 == c2 && priority1 < priority2){
                     return -1; // p1 is less important
-                } else if (priority1 > priority2) {
+                } else if (c1 == c2 && priority1 > priority2) {
                     return 1; // p1 is more important
-                } else if(priority1 == priority2) {
+                } else if(c1 == c2 && priority1 == priority2) {
                     return 0; // priorities are equal
-                } }
-            else if (c1 > c2){
-                return 1;
-            } else if (c1 < c2){
-                return -1;
-            } else {
-                throw new IllegalArgumentException("Both items must be instances of Cliente.");
+                }
+            else{
+                PriorityComparator pc = new PriorityComparator();
+                pc.compare(p1.getCliente(),p2.getCliente());
             }
-        }
+
+    }
     }
 
     public void CircularPriorityQueue(int capacity) {

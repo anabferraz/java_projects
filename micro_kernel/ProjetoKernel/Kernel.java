@@ -21,7 +21,9 @@ class Kernel {
 
         // Threads clientes para serem atendidas
         for (int i = 1; i < 5; i++) {
-            Thread clientThread = new Thread(new Client);
+            Thread clientThread = new Thread();
+            Client cliente = new Client();
+            cliente.criarCliente(i);
             clientThread.start();
         }
     }
@@ -38,9 +40,5 @@ class Kernel {
         return readyQueue.poll();
     }
 
-    public static void main(String[] args) {
-        Kernel kernel = new Kernel();
-        kernel.start();
-    }
 }
 

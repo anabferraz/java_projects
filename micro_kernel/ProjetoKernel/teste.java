@@ -6,6 +6,8 @@ import java.util.*;
 
 public class teste{
     public static void main (String[]args){
+        Kernel kernel = new Kernel();
+        kernel.start();
         CircularPriorityQueue priorityQueue = new CircularPriorityQueue(10);
         Process item1 = new Process();
         Process item2 = new Process();
