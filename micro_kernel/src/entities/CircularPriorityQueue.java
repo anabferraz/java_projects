@@ -1,10 +1,7 @@
-//package micro_kernel;
-
-import java.util.Queue;
-import java.util.LinkedList;
+package entities;
 import java.util.*;
 
-class CircularPriorityQueue {
+public class CircularPriorityQueue {
     private Queue<String>[] queues;
     private int[] priorities;
     private int capacity;
@@ -26,14 +23,16 @@ class CircularPriorityQueue {
         int priority = p.getPriority();
         String name = p.getItem();
         if (priority >= 0 && priority < 4) {
-            if (queues[priority].size() < capacity) {
-               queues[priority].add(name);
-               if (true){
-                System.out.println("Tarefa "+name+ " adicionada na fila");
-               }
-            } else {
-                System.out.println("Fila de prioridade " + priority + " está cheia.");
-            }
+            for (int i = 0;i<4;i++){
+                if (queues[priority].size() < capacity && priority == i) {
+                    queues[priority].add(name);
+                    if (true){
+                        System.out.println("Tarefa "+name+ " adicionada na fila");
+                    }
+                } else if (queues[priority].size() == capacity && priority == i){
+                    System.out.println("Fila de prioridade " + priority + " está cheia.");
+                }
+                }
         } else {
             System.out.println("Prioridade inválida.");
         }

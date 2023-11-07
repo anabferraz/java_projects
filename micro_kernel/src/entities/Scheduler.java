@@ -1,4 +1,4 @@
-//package micro_kernel;
+package entities;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -30,6 +30,7 @@ class Scheduler implements Runnable {
             }
 
     }
+        return capacity;
     }
 
     public void CircularPriorityQueue(int capacity) {
@@ -47,6 +48,6 @@ class Scheduler implements Runnable {
     
     @Override
     public void run() {
-        // Implemente a lógica de escalonamento aqui
+        System.out.println("Eu sou uma thread trabalhadora");
     }
 }

@@ -1,3 +1,4 @@
+package entities;
 import java.util.Scanner;
 public class Process {
         private String name;

@@ -1,7 +1,7 @@
-//package micro_kernel;
+package entities;
 import java.util.*;
 
-class Kernel {
+public class Kernel {
     private PriorityQueue<Process> readyQueue;
 
     public Kernel() {
@@ -23,7 +23,14 @@ class Kernel {
         for (int i = 1; i < 5; i++) {
             Thread clientThread = new Thread();
             Client cliente = new Client();
-            cliente.criarCliente(i);
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Digite o nome do cliente "+ i + ": ");
+            String nomeCliente = scan.nextLine();
+            cliente.setCliente(nomeCliente);
+            System.out.println("Digite a prioridade: ");
+            int prioridade = scan.nextInt();
+            cliente.setPrioridadeCliente(prioridade);
+            System.out.println("Cliente "+nomeCliente+" adicionado com prioridade "+prioridade);
             clientThread.start();
         }
     }

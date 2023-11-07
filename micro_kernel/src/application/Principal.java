@@ -1,13 +1,14 @@
-//import micro_kernel.*; 
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.LinkedList;
+package application;
+
+import entities.*;
+import entities.Process;
 import java.util.*;
 
-public class teste{
+public class Principal{
     public static void main (String[]args){
         Kernel kernel = new Kernel();
         kernel.start();
+        System.out.println("Eu sou a thread principal");
         CircularPriorityQueue priorityQueue = new CircularPriorityQueue(10);
         Process item1 = new Process();
         Process item2 = new Process();

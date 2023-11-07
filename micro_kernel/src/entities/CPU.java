@@ -1,4 +1,4 @@
-//package micro_kernel;
+package entities;
 
 class CPU implements Runnable {
     private String cpu;
@@ -9,6 +9,6 @@ class CPU implements Runnable {
 
     @Override
     public void run() {
-        // Implemente a lógica de execução da CPU aqui
+        System.out.println("Eu sou uma thread trabalhadora");
     }
 }
