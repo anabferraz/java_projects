@@ -1,6 +1,7 @@
 package entities;
 import java.util.*;
-public class Process {
+import java.util.concurrent.Semaphore;
+public class Process extends Thread {
         private String name;
         private int priority;
         private Client cliente;
@@ -8,7 +9,7 @@ public class Process {
         private static CircularPriorityQueue priorityQueue = new CircularPriorityQueue(10);
         private static PriorityQueue<Process> readyQueue = new PriorityQueue<>(); // lista de prontos com prioridade
     
-        public int getPriority() {
+        public int getPrioridade() {
             return priority;
         }
         public String getItem() {
@@ -17,10 +18,10 @@ public class Process {
         public Client getCliente(){
             return cliente;
         }
-        public void setName(String name){
+        public void setNome(String name){
             this.name = name;
         }
-        public void setPriority(int priority){
+        public void setPrioridade(int priority){
             this.priority = priority;
         }
         public void setCliente(Client cliente){
@@ -53,6 +54,12 @@ public class Process {
                         if (numer == 1){
                             priorityQueue.enqueue(item, priorityQueue);
                         }
+                        else if (numer == 0){
+                            priorityQueue.enqueue(item, priorityQueue);
+                        }
+                        else{
+                            continue;
+                        }
                     }
                     break;
                 }
@@ -69,7 +76,7 @@ public class Process {
         Client cliente = p.getCliente();
         readyQueue.add(p);
         notify(); // Notifica o escalador de CPUs
-        p.run();
+        p.run(readyQueue);
     }
     public synchronized Process getNextProcess() throws InterruptedException {
         while (readyQueue.isEmpty()) {
@@ -77,11 +84,13 @@ public class Process {
         }
         return readyQueue.poll();
     }
-    public void run(){
-        
-        Thread thrd = new Thread (new InterruptibleThread());
-        thrd.start();
-        System.out.println("Estou executando a tarefa");
-        thrd.interrupt();
+    public void run(PriorityQueue<Process> readyQueue){
+        Semaphore sem = new Semaphore(2);
+        MyThread thrd = new MyThread (sem,readyQueue.element().getItem());
+        thrd.run();
+
+    }
+    public PriorityQueue<Process> getListaProcess(){
+        return readyQueue;
     }
 }

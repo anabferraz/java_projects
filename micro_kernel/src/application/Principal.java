@@ -3,9 +3,10 @@ package application;
 import entities.*;
 import entities.Process;
 import java.util.*;
+import java.util.concurrent.Semaphore;
 
 public class Principal{
-    public static void main (String[]args){
+    public static void main (String[]args) throws InterruptedException{
         Kernel kernel = new Kernel();
         kernel.start();
         System.out.println("Eu sou a thread principal");
@@ -22,7 +23,7 @@ public class Principal{
                 item.Process(item);
             }
             else if (resp == 'n'){
-                System.out.println("Retornando ao menu principal...");
+                break;
             }
 
         }

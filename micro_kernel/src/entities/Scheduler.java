@@ -15,7 +15,7 @@ class Scheduler implements Runnable {
 
     public int compare(Process p1, Process p2) {
         try{
-            if (p1 instanceof Process && p2 instanceof Process) {
+            if (p1 instanceof Thread && p2 instanceof Thread) {
                 int c1 = p1.getCliente().getPrioridadeCliente();
                 int c2 = p2.getCliente().getPrioridadeCliente();
                 int priority1 = p1.getPriority();
