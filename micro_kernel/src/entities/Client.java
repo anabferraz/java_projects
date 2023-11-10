@@ -1,16 +1,26 @@
 package entities;
-import java.util.Scanner;
+import java.util.*;
 
 class Client implements Runnable {
     private String cliente;
     private int prioridade;
+    private int idCliente;
+    private static List<Client> lista;
+
+    public int getIdCliente(){
+        return this.idCliente;
+    }
 
     public int getPrioridadeCliente(){
-        return prioridade;
+        return this.prioridade;
     }
 
     public String getCliente(){
-        return cliente;
+        return this.cliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public void setPrioridadeCliente(int prioridade){
@@ -21,8 +31,12 @@ class Client implements Runnable {
         this.cliente = cliente;
     }
 
+    public List<Client> getLista(){
+        return lista;
+    }
+
     @Override
     public void run() {
-        System.out.println("Eu sou uma thread trabalhadora");
+        System.out.println("Eu sou uma thread trabalhadora de Cliente");
     }
 }

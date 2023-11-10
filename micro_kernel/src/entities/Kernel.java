@@ -2,50 +2,49 @@ package entities;
 import java.util.*;
 
 public class Kernel {
-    private PriorityQueue<Process> readyQueue;
+    List<Client> listaClient = new ArrayList<Client>();
 
     public Kernel() {
-        readyQueue = new PriorityQueue<>(); // Fila de prontos com prioridade
     }
 
     public void start() {
         // Thread do escalador de CPUs
         Thread schedulerThread = new Thread(new Scheduler());
         schedulerThread.start();
+        schedulerThread.run();
 
         // Threads simulando CPUs (Multiprocessamento)
         Thread cpu1 = new Thread(new CPU("CPU 1"));
         Thread cpu2 = new Thread(new CPU("CPU 2"));
         cpu1.start();
         cpu2.start();
+        cpu1.run();
+        cpu2.run();
 
         // Threads clientes para serem atendidas
         for (int i = 1; i < 5; i++) {
             Thread clientThread = new Thread();
             Client cliente = new Client();
             Scanner scan = new Scanner(System.in);
+            int idCliente = i;
+            cliente.setIdCliente(idCliente);
             System.out.println("Digite o nome do cliente "+ i + ": ");
             String nomeCliente = scan.nextLine();
             cliente.setCliente(nomeCliente);
             System.out.println("Digite a prioridade: ");
             int prioridade = scan.nextInt();
             cliente.setPrioridadeCliente(prioridade);
+            listaClient.add(cliente);
             System.out.println("Cliente "+nomeCliente+" adicionado com prioridade "+prioridade);
+            System.out.println("O ID do cliente é "+ idCliente);
             clientThread.start();
+            clientThread.run();
+
         }
     }
 
-    public synchronized void addToReadyQueue(Process process) {
-        readyQueue.add(process);
-        notify(); // Notifica o escalador de CPUs
+    public List<Client> retornaLista(){
+        return listaClient;
     }
-
-    public synchronized Process getNextProcess() throws InterruptedException {
-        while (readyQueue.isEmpty()) {
-            wait(); // Aguarda até que haja processos na fila de prontos
-        }
-        return readyQueue.poll();
-    }
-
 }
 

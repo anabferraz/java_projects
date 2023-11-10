@@ -9,6 +9,7 @@ class CPU implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Eu sou uma thread trabalhadora");
+        System.out.println("Eu sou uma thread trabalhadora da CPU");
     }
+
 }

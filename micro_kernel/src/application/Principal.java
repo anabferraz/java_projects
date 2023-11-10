@@ -9,24 +9,22 @@ public class Principal{
         Kernel kernel = new Kernel();
         kernel.start();
         System.out.println("Eu sou a thread principal");
-        CircularPriorityQueue priorityQueue = new CircularPriorityQueue(10);
-        Process item1 = new Process();
-        Process item2 = new Process();
-        Process item3 = new Process();
-        Process item4 = new Process();
-        item1.criarTask();
-        item2.criarTask();
-        item3.criarTask();
-        item4.criarTask();
 
-        priorityQueue.enqueue(item1);
-        priorityQueue.enqueue(item2);
-        priorityQueue.enqueue(item3);
-        priorityQueue.enqueue(item4);
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            System.out.println("******** Bem-vindo(a) ao menu principal! *********");
+            System.out.println("Ao iniciar o código, o Kernel já foi inicializado,");
+            System.out.println("juntamente com as Threads CPU e Cliente.");
+            System.out.println("Você gostaria de cadastrar uma nova Task? \ns/n");
+            char resp = sc.next().charAt(0);
+            if (resp == 's'){
+                Process item = new Process();
+                item.Process(item);
+            }
+            else if (resp == 'n'){
+                System.out.println("Retornando ao menu principal...");
+            }
 
-        priorityQueue.dequeue();
-        priorityQueue.dequeue();
-        priorityQueue.dequeue();
-        priorityQueue.dequeue();
+        }
     }
 }
